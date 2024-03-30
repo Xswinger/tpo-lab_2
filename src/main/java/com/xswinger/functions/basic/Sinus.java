@@ -1,8 +1,8 @@
 package com.xswinger.functions.basic;
 
-import com.xswinger.interfaces.TrigonometricFunction;
+import com.xswinger.interfaces.BasicFunction;
 
-public class Sinus implements TrigonometricFunction {
+public class Sinus implements BasicFunction {
 
     private double[] stubs = new double[] {
         -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5
@@ -28,8 +28,7 @@ public class Sinus implements TrigonometricFunction {
     //     return res;
     // }
 
-    @Override
-    public double calcFactorial(int acc) {
+    private double calcFactorial(int acc) {
         long fact = 1;
         for (int i = 2; i <= acc; i++) {
             fact = fact * i;

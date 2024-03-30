@@ -2,7 +2,7 @@ package com.xswinger.functions.basic;
 
 import com.xswinger.interfaces.BasicFunction;
 
-public class NaturalLogarithm  implements BasicFunction{
+public class NaturalLogarithm implements BasicFunction {
 
     private double[] stubs = new double[] {
         1, 2, 3, 4, 5, 6, 7, 8, 9, 10
