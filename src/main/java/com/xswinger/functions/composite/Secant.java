@@ -1,15 +1,22 @@
 package com.xswinger.functions.composite;
 
-import com.xswinger.functions.basic.Cosine;
-import com.xswinger.interfaces.CompositeFunction;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
-public class Secant implements CompositeFunction {
+import com.xswinger.abstractClasses.AbstractFunction;
 
-    private Cosine cosine = new Cosine();
+public class Secant extends AbstractFunction {
+
+    private Cosine cosine;
+
+    public Secant(Cosine cosine) {
+        this.cosine = cosine;
+    }
 
     @Override
-    public double calc(double value, int acc) {
-        return (1/cosine.calc(value, acc));
+    public Double calculate(double value) {
+        return (1/cosine.calculate(value));
     }
 
 }

@@ -2,17 +2,34 @@ package com.xswinger.functions.composite;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ArgumentsSource;
+import org.mockito.Mock;
+import org.mockito.Spy;
+
+import com.xswinger.abstractClasses.AbstractFunction;
+import com.xswinger.functions.ArgumentProvider;
+import com.xswinger.functions.basic.Sinus;
 
 public class CotangentTest {
 
-    private final Cotangent cot = new Cotangent();
+    @Mock
+    private Sinus mockSinus;
+    @Mock
+    private Cosine mockCosine;
+    @Spy
+    private Cotangent mockCot;
+
+    @BeforeEach
+    public void init() {
+        mockCot = new Cotangent(mockSinus, mockCosine);
+    }
 
     @ParameterizedTest
-    @CsvSource({"1, 0", "2, 0.6931", "3, 1.0986", "4, 1.3863", "-2, -0.4161", "3, -0.9899", "-3, -0.9899", "5, 0.2836", "-5, 0.2836"})
+    @ArgumentsSource(ArgumentProvider.class)
     public void calcTest(double seriesValue, double funcValue) {
-        assertEquals(funcValue, cot.calc(seriesValue, 5), 0.02);
+        assertEquals(funcValue, mockCot.calculate(seriesValue), AbstractFunction.EPSILON);
     }
 
 }

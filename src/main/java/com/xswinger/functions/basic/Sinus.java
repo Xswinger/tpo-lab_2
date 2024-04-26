@@ -1,39 +1,29 @@
 package com.xswinger.functions.basic;
 
-import com.xswinger.interfaces.BasicFunction;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-public class Sinus implements BasicFunction {
+import com.xswinger.abstractClasses.AbstractFunction;
 
-    private double[] stubs = new double[] {
-        -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5
-    };
-
-    // Cosine cosine = new Cosine(); 
+public class Sinus extends AbstractFunction {
 
     @Override
-    public double calc(double value, int acc) {
-        double res = (
-            (
-                Math.pow(-1, acc) * Math.pow(value, 2 * acc + 1)
-            ) / (
-                calcFactorial(2 * acc + 1)
-            )
-        );
-        return res;
-    }
+    public Double calculate(double x) {
+        double res = 0;
 
-    // @Override
-    // public double calc(double value, int acc) {
-    //     double res = Math.sqrt(1 - Math.pow(cosine.calc(value, acc), 2));
-    //     return res;
-    // }
-
-    private double calcFactorial(int acc) {
-        long fact = 1;
-        for (int i = 2; i <= acc; i++) {
-            fact = fact * i;
+        for (int i = 0; i <= ACCURACY; i++) {
+            res += (
+                (
+                    Math.pow(-1, i) * Math.pow(x, 2 * i + 1)
+                ) / (
+                    calculateFactorial(2 * i + 1)
+                )
+            );
         }
-        return fact;
+
+        return res;
     }
 
 }

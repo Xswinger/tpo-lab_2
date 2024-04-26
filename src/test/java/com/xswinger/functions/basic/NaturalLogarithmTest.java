@@ -3,16 +3,19 @@ package com.xswinger.functions.basic;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ArgumentsSource;
+
+import com.xswinger.abstractClasses.AbstractFunction;
+import com.xswinger.functions.ArgumentProvider;
 
 public class NaturalLogarithmTest {
 
     private final NaturalLogarithm log = new NaturalLogarithm();
 
     @ParameterizedTest
-    @CsvSource({"1, 0", "2, 0.6931", "3, 1.0986", "4, 1.3863", "-2, -0.4161", "3, -0.9899", "-3, -0.9899", "5, 0.2836", "-5, 0.2836"})
+    @ArgumentsSource(ArgumentProvider.class)
     public void calcTest(double seriesValue, double funcValue) {
-        assertEquals(funcValue, log.calc(seriesValue, 5), 0.02);
+        assertEquals(funcValue, log.calculate(seriesValue), AbstractFunction.EPSILON);
     }
 
 }

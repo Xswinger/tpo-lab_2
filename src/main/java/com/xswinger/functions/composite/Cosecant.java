@@ -1,15 +1,23 @@
 package com.xswinger.functions.composite;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+import com.xswinger.abstractClasses.AbstractFunction;
 import com.xswinger.functions.basic.Sinus;
-import com.xswinger.interfaces.CompositeFunction;
 
-public class Cosecant implements CompositeFunction {
+public class Cosecant extends AbstractFunction {
 
-    private Sinus sinus = new Sinus();
+    private Sinus sinus;
+
+    public Cosecant(Sinus sinus) {
+        this.sinus = sinus;
+    }
 
     @Override
-    public double calc(double value, int acc) {
-        return (1 / sinus.calc(value, acc));
+    public Double calculate(double value) {
+        return (1 / sinus.calculate(value));
     }
 
 }

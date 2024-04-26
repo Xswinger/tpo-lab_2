@@ -1,17 +1,25 @@
 package com.xswinger.functions.composite;
 
-import com.xswinger.functions.basic.Cosine;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+import com.xswinger.abstractClasses.AbstractFunction;
 import com.xswinger.functions.basic.Sinus;
-import com.xswinger.interfaces.CompositeFunction;
 
-public class Cotangent implements CompositeFunction {
+public class Cotangent extends AbstractFunction {
 
-    private Sinus sinus = new Sinus();
-    private Cosine cosine = new Cosine();
+    private Sinus sinus;
+    private Cosine cosine;
+
+    public Cotangent(Sinus sinus, Cosine cosine) {
+        this.sinus = sinus;
+        this.cosine = cosine;
+    }
 
     @Override
-    public double calc(double value, int acc) {
-        return (cosine.calc(value, acc) / sinus.calc(value, acc));
+    public Double calculate(double value) {
+        return (cosine.calculate(value) / sinus.calculate(value));
     }
 
 }

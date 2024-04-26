@@ -1,17 +1,26 @@
 package com.xswinger.functions.composite;
 
-import com.xswinger.functions.basic.CosineTest;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import com.xswinger.abstractClasses.AbstractFunction;
 import com.xswinger.functions.basic.Sinus;
-import com.xswinger.interfaces.CompositeFunction;
 
-public class Tangent implements CompositeFunction {
+public class Tangent extends AbstractFunction {
 
-    private Sinus sinus = new Sinus();
-    private CosineTest cosine = new CosineTest();
+    private Sinus sinus;
+    private Cosine cosine;
+
+    public Tangent(Sinus sinus, Cosine cosine) {
+        this.sinus = sinus;
+        this.cosine = cosine;
+    }
 
     @Override
-    public double calc(double value, int acc) {
-        return (sinus.calc(value, acc)/cosine.calc(value, acc));
+    public Double calculate(double value) {
+        return (sinus.calculate(value)/cosine.calculate(value));
     }
     
 }

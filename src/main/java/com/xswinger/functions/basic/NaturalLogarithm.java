@@ -1,26 +1,26 @@
 package com.xswinger.functions.basic;
 
-import com.xswinger.interfaces.BasicFunction;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
-public class NaturalLogarithm implements BasicFunction {
+import com.xswinger.abstractClasses.AbstractFunction;
 
-    private double[] stubs = new double[] {
-        1, 2, 3, 4, 5, 6, 7, 8, 9, 10
-    };
+public class NaturalLogarithm extends AbstractFunction {
 
     @Override
-    public double calc(double value, int acc) {
-        value -= 1;
+    public Double calculate(double x) {
+        if (x <= 0) {
+            throw new IllegalArgumentException("Logarathm argument an't be less then zero");
+        }
+
+        double res = 0;
         
-        double res = ( 
-            Math.pow(-1, acc) * 
-            (
-                Math.pow(value, acc + 1)
-            ) / (
-                acc + 1
-            )
-        );
-        return res;
+        for (int i = 1; i <= ACCURACY; i+=2) {
+            res += Math.pow((1 - x) / (1 + x), i) / i;
+        }
+        
+        return -2 * res;
     }
 
 }
