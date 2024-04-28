@@ -6,14 +6,24 @@ import java.util.List;
 
 import com.xswinger.abstractClasses.AbstractFunction;
 import com.xswinger.functions.basic.NaturalLogarithm;
+import com.xswinger.functions.basic.Sinus;
+import com.xswinger.util.Parser;
 
 public class Logarithm extends AbstractFunction{
 
-    private final Integer BASE;
+    private Integer BASE;
 
     private NaturalLogarithm log;
 
+    public Logarithm() {}
+
     public Logarithm(NaturalLogarithm log, Integer base) {
+        this.log = log;
+        this.BASE = base;
+    }
+
+    public Logarithm(NaturalLogarithm log, Integer base, String funcName) {
+        super(new Parser(funcName), funcName);
         this.log = log;
         this.BASE = base;
     }

@@ -1,19 +1,21 @@
 package com.xswinger.functions.composite;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Stream;
-
 import com.xswinger.abstractClasses.AbstractFunction;
 import com.xswinger.functions.basic.Sinus;
+import com.xswinger.util.Parser;
 
 public class Cosine extends AbstractFunction {
 
     private Sinus sinus;
 
+    public Cosine() {}
+
     public Cosine(Sinus sinus) {
+        this.sinus = sinus;
+    }
+
+    public Cosine(Sinus sinus, String funcName) {
+        super(new Parser(funcName), funcName);
         this.sinus = sinus;
     }
 

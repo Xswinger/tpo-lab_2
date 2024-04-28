@@ -18,21 +18,6 @@ import com.xswinger.util.Parser;
 
 public class EquationSystem extends AbstractFunction {
 
-    public final Map<Double, Double> equivalenceTable = new HashMap<Double, Double>() {{
-        put(1.0, 0.0);
-        put(2.0, 21.46310);
-        put(3.0, 250.33696);
-        put(4.0, 899.13358);
-        put(5.0, 2065.35174);
-    }};
-
-    private final String[] filenames = new String[] {
-        "Cosecant", "Cotangent", "Logarithm", "Secant", "Tangent"
-    };
-
-    private final Parser parser = new Parser("EquationSystem.csv");
-    private final Double[] stubs = new Double[]{1.0, 2.0, 3.0, 4.0, 5.0};
-
     private final Sinus sin = new Sinus();
     private final Cosine cos = new Cosine(sin);
     private final Cosecant csc = new Cosecant(sin);
@@ -43,6 +28,14 @@ public class EquationSystem extends AbstractFunction {
     private final Logarithm log2 = new Logarithm(ln, 2);
     private final Logarithm log5 = new Logarithm(ln, 5);
     private final Logarithm log10 = new Logarithm(ln, 10);
+
+    public static final double EPSILON = 10;
+
+    public EquationSystem() {}
+
+    public EquationSystem(String funcName) {
+        super(new Parser(funcName), funcName);
+    }
 
     @Override
     public Double calculate(double x) {

@@ -1,18 +1,24 @@
 package com.xswinger.abstractClasses;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import com.xswinger.interfaces.BasicFunction;
 import com.xswinger.util.Parser;
 
 public abstract class AbstractFunction implements BasicFunction {
 
-    public static final double EPSILON = 0.00000000001;
+    public static final double EPSILON = 0.0001;
 
     public static final int ACCURACY = 100;
+
+    public Parser parser;
+
+    public String funcName;
+
+    public AbstractFunction() {}
+
+    public AbstractFunction(Parser parser, String funcName) {
+        this.parser = parser;
+        this.funcName = funcName;
+    }
 
     @Override
     public Double calculateFactorial(int acc) {

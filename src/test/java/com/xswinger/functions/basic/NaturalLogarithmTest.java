@@ -15,7 +15,7 @@ public class NaturalLogarithmTest {
     @ParameterizedTest
     @ArgumentsSource(ArgumentProvider.class)
     public void calcTest(double seriesValue, double funcValue) {
-        assertEquals(funcValue, log.calculate(seriesValue), AbstractFunction.EPSILON);
+        assertEquals(log.calculate(seriesValue), funcValue, AbstractFunction.EPSILON);
     }
 
 }

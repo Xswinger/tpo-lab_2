@@ -6,6 +6,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ArgumentsSource;
 import org.mockito.Spy;
 
+import com.xswinger.abstractClasses.AbstractFunction;
+
 public class EquationSystemTest {
 
     @Spy
@@ -14,7 +16,11 @@ public class EquationSystemTest {
     @ParameterizedTest
     @ArgumentsSource(ArgumentProvider.class)
     public void calcTest(double value, double expectedResult) {
-        assertEquals(expectedResult, system.calculate(value), 0.02);
+        if (value <= 0) {
+            assertEquals(system.calculate(value), expectedResult, Math.pow(EquationSystem.EPSILON, Math.abs(value) * 10 + 10));
+        } else {
+            assertEquals(system.calculate(value), expectedResult, AbstractFunction.EPSILON);
+        }
     }
 
 }

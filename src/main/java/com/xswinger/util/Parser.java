@@ -12,29 +12,41 @@ public class Parser {
     private File file;
 
     public Parser(String filename) {
-        file = new File(path + filename);
+        file = new File(path + filename + ".csv");
     }
 
-    public void parsLine(double value, double res) {
-        String data = value + ", " + res;
-        write(data);
+    private void writeHeaders(FileWriter writer) throws IOException {
+        writer.write(new String("x, y"));
+        writer.append('\n');
     }
 
-    public void parsArray(Double[] values, Double[] results) {
-        String data = "";
-        for (int i = 0; i < values.length; i++) {
-            data += Double.toString(values[i]) + ", " +  Double.toString(results[i]) + "\n";
-        }
-        write(data);
-    }
-
-    private void write(String data) {
+    public void write(double x, double y) {
         try {
             file.createNewFile();
             
             FileWriter writer = new FileWriter(file, false);
-            writer.write(data);
+            writer.write(new String(x + ", " + y));
             writer.append('\n');
+
+            writer.flush();
+            writer.close();
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void write(double[] x, double[] y) {
+        try {
+            file.createNewFile();
+            
+            FileWriter writer = new FileWriter(file, false);
+
+            this.writeHeaders(writer);
+
+            for (int i = 0; i < x.length; i++) {
+                writer.write(new String(x[i] + ", " + y[i]));
+                writer.append('\n');
+            }
 
             writer.flush();
             writer.close();

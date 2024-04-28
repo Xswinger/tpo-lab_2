@@ -17,9 +17,9 @@ public class TangentTest {
     @Spy
     private Tangent tan;
     @Mock
-    private Sinus mockSin;
+    private Sinus mockSin = new Sinus();
     @Mock
-    private Cosine mockCos;
+    private Cosine mockCos = new Cosine(mockSin);
 
     @BeforeEach
     public void init() {
@@ -29,7 +29,7 @@ public class TangentTest {
     @ParameterizedTest
     @ArgumentsSource(ArgumentProvider.class)
     public void calcTest(double seriesValue, double funcValue) {
-        assertEquals(funcValue, tan.calculate(seriesValue), AbstractFunction.EPSILON);
+        assertEquals(tan.calculate(seriesValue), funcValue, AbstractFunction.EPSILON);
     }
 
 }

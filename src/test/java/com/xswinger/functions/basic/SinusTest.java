@@ -15,7 +15,7 @@ public class SinusTest {
     @ParameterizedTest
     @ArgumentsSource(ArgumentProvider.class)
     public void calcTest(double seriesValue, double funcValue) {
-        assertEquals(funcValue, sin.calculate(seriesValue), AbstractFunction.EPSILON);
+        assertEquals(sin.calculate(seriesValue), funcValue, AbstractFunction.EPSILON);
     }
 
 }

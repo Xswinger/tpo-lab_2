@@ -5,8 +5,15 @@ import java.util.HashMap;
 import java.util.List;
 
 import com.xswinger.abstractClasses.AbstractFunction;
+import com.xswinger.util.Parser;
 
 public class NaturalLogarithm extends AbstractFunction {
+
+    public NaturalLogarithm() {}
+
+    public NaturalLogarithm(String funcName) {
+        super(new Parser(funcName), funcName);
+    }
 
     @Override
     public Double calculate(double x) {
